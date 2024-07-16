@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://blhuryfkpwo6t"]
+
+[ext_resource type="Texture2D" uid="uid://clhsju7asfs0d" path="res://assets/brick break bg.aseprite" id="1_5vide"]
+
+[node name="BrickBreakBg" type="Sprite2D"]
+texture = ExtResource("1_5vide")
+centered = false

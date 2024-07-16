@@ -1,0 +1,38 @@
+extends StaticBody2D
+var toughness = 1
+var start_toughness = 1
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	
+	#tells everything its dead if the bri
+	if toughness <=0:
+		SignalBus.brick_destroyed.emit(start_toughness)
+		queue_free()
+
+func damage(power):
+	toughness -= power
+	if toughness <=0:
+		pass
+	elif toughness == 1 :
+		$Brick2.hide()
+		$Brick1.show()
+	elif toughness == 2 :
+		$Brick3.hide()
+		$Brick2.show()
+	elif toughness >= 3 :
+		$Brick3.show()
+
+func setup_brick(pos, t):
+	toughness = t
+	position = pos
+	if t == 1 :
+		$Brick1.show()
+	elif t == 2 :
+		$Brick2.show()
+	elif t == 3 :
+		$Brick3.show()

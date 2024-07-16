@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsemcq0amy7ej"]
+
+[ext_resource type="PackedScene" uid="uid://blhuryfkpwo6t" path="res://background.tscn" id="1_1ihs2"]
+[ext_resource type="Script" path="res://main.gd" id="1_vn2ai"]
+[ext_resource type="PackedScene" uid="uid://dxq3hy1xqbt0a" path="res://paddle.tscn" id="2_2ur46"]
+[ext_resource type="PackedScene" uid="uid://cuk7g7ktpa7sl" path="res://ball_bounds.tscn" id="2_88lhb"]
+[ext_resource type="PackedScene" uid="uid://b1lkubleua7kc" path="res://ball.tscn" id="4_5equr"]
+[ext_resource type="PackedScene" uid="uid://cfuk2b5x0fpld" path="res://level_manager.tscn" id="6_0hl08"]
+[ext_resource type="Script" path="res://Game.gd" id="6_ln5nf"]
+[ext_resource type="PackedScene" uid="uid://cjae5m785ar3u" path="res://hud.tscn" id="6_vfsmv"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_vn2ai")
+ball_scene = ExtResource("4_5equr")
+
+[node name="Background" parent="." instance=ExtResource("1_1ihs2")]
+visible = false
+
+[node name="BallSack" type="Node2D" parent="."]
+visible = false
+
+[node name="StartScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 270.0
+offset_bottom = 370.0
+
+[node name="StartButton" type="Button" parent="StartScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -15.5
+offset_right = 28.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "START
+"
+
+[node name="Game" type="Node" parent="."]
+script = ExtResource("6_ln5nf")
+
+[node name="LevelManager" parent="Game" instance=ExtResource("6_0hl08")]
+
+[node name="HUD" parent="Game" instance=ExtResource("6_vfsmv")]
+visible = false
+
+[node name="Bounds" parent="Game" instance=ExtResource("2_88lhb")]
+visible = false
+
+[node name="Paddle" parent="Game" instance=ExtResource("2_2ur46")]
+visible = false
+speed = 400
+start_pos_y = 340
+
+[connection signal="pressed" from="StartScreen/StartButton" to="." method="_on_start_button_pressed"]

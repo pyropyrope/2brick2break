@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfuk2b5x0fpld"]
+
+[ext_resource type="PackedScene" uid="uid://kgfr1cm7dify" path="res://brick.tscn" id="2_a2j7q"]
+[ext_resource type="PackedScene" uid="uid://vv5c5l4e5lsy" path="res://test_level.tscn" id="2_ue4io"]
+
+[sub_resource type="GDScript" id="GDScript_iubiq"]
+script/source = "extends Node
+var possible_possitons
+@export var brick: PackedScene
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	possible_possitons = $TestLevel.possible_possitons()
+	$TestLevel.queue_free()
+	make_rand_level(4,10,10)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if $ActiveLevel.get_child_count() <= 0:
+		SignalBus.level_over.emit()
+
+#generates a randomized level with given parameters
+func make_rand_level(rows,cols,blank_chance):
+	
+	#creates blank array for each row
+	for r in (rows):
+		var row = possible_possitons[r]
+		#adds a brick for each col
+		for c in (cols):
+			#creates a random number between 1 and 100
+			var blank_rand = ((randi()%100)+1)
+			
+			#if number is less than the blank chance, make a brick
+			if blank_rand >= blank_chance: 
+				var new_brick = brick.instantiate()
+				new_brick.setup_brick(row[c],(randi()%3)+1)
+				$ActiveLevel.add_child(new_brick)
+			#dont make brick
+			else:
+				pass
+				
+#im not commenting this
+func hide():
+	$ActiveLevel.hide()
+	
+func show():
+	$ActiveLevel.show()
+"
+
+[node name="LevelManager" type="Node"]
+script = SubResource("GDScript_iubiq")
+brick = ExtResource("2_a2j7q")
+
+[node name="TestLevel" parent="." instance=ExtResource("2_ue4io")]
+visible = false
+
+[node name="ActiveLevel" type="Node2D" parent="."]

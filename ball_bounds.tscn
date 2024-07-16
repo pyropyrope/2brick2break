@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuk7g7ktpa7sl"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_v73cj"]
+a = Vector2(7, 82)
+b = Vector2(7, 363)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lnmj5"]
+a = Vector2(263, 82)
+b = Vector2(7, 82)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2nows"]
+a = Vector2(263, 82)
+b = Vector2(263, 363)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_e8y0e"]
+a = Vector2(7, 363)
+b = Vector2(263, 363)
+
+[node name="Ball Bounds" type="Node2D"]
+
+[node name="LeftWall" type="StaticBody2D" parent="." groups=["walls"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("SegmentShape2D_v73cj")
+
+[node name="TopWall" type="StaticBody2D" parent="." groups=["walls"]]
+
+[node name="TopWallCollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource("SegmentShape2D_lnmj5")
+
+[node name="RightWall" type="StaticBody2D" parent="." groups=["walls"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("SegmentShape2D_2nows")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("SegmentShape2D_e8y0e")

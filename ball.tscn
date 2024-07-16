@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1lkubleua7kc"]
+
+[ext_resource type="Script" path="res://ball.gd" id="1_cy5tw"]
+[ext_resource type="Texture2D" uid="uid://di1q32i4j2sh3" path="res://assets/brick break ball.aseprite" id="1_rd8av"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_330nx"]
+friction = 0.0
+rough = true
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g3fdk"]
+radius = 5.0
+
+[node name="Ball" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_330nx")
+gravity_scale = 0.0
+lock_rotation = true
+max_contacts_reported = 3
+contact_monitor = true
+linear_velocity = Vector2(1, 1)
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_cy5tw")
+speed = 150
+
+[node name="BrickBreakBall" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
+texture = ExtResource("1_rd8av")
+
+[node name="BallCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 4)
+shape = SubResource("CircleShape2D_g3fdk")
+
+[node name="BallVisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="BallVisibleOnScreenNotifier2D" to="." method="_on_ball_visible_on_screen_notifier_2d_screen_exited"]

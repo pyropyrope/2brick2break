@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxq3hy1xqbt0a"]
+
+[ext_resource type="Script" path="res://paddle.gd" id="1_1uy4l"]
+[ext_resource type="Texture2D" uid="uid://djabwc7trjvcj" path="res://assets/brick break paddle.aseprite" id="1_jebdx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rb1wv"]
+size = Vector2(8, 40)
+
+[node name="Paddle" type="CharacterBody2D"]
+script = ExtResource("1_1uy4l")
+
+[node name="BrickBreakPaddle" type="Sprite2D" parent="."]
+texture = ExtResource("1_jebdx")
+centered = false
+
+[node name="PaddleCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(20, 4.00001)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_rb1wv")
