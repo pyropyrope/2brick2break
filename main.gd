@@ -10,6 +10,7 @@ var level = 0
 var new_ball
 
 # Called when the node enters the scene tree for the first time.
+#needs aesprite to display any assets?
 func _ready():
 	
 	#connects to the signal bus
