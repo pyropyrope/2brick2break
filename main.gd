@@ -11,6 +11,7 @@ var new_ball
 var paddle_center
 
 # Called when the node enters the scene tree for the first time.
+#needs aesprite to display any assets?
 func _ready():
 	
 	#connects to the signal bus
