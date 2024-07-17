@@ -8,7 +8,6 @@ var score = 0
 var lives = 3
 var level = 0
 var new_ball
-var paddle_center
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,12 +27,12 @@ func _process(delta):
 	#TODO better game flow, add launch variables
 	if Input.is_action_just_pressed('launch'):
 		
-		paddle_center = get_paddle_center()
+		var paddle_center = get_paddle_center()
 		new_ball = create_ball(Vector2(paddle_center.x,paddle_center.y-30))
 	
 	if Input.is_action_just_released('launch'):
-		paddle_center = get_paddle_center()
-		var launch_vector = (new_ball.position - paddle_center) *.03
+		var paddle_center = get_paddle_center()
+		var launch_vector = (new_ball.position - paddle_center) *.02
 		new_ball.launch(launch_vector)
 	
 

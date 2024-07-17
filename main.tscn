@@ -14,7 +14,6 @@ script = ExtResource("1_vn2ai")
 ball_scene = ExtResource("4_5equr")
 
 [node name="Background" parent="." instance=ExtResource("1_1ihs2")]
-visible = false
 
 [node name="BallSack" type="Node2D" parent="."]
 visible = false

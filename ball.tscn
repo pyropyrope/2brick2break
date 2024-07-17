@@ -32,6 +32,8 @@ position = Vector2(4, 4)
 shape = SubResource("CircleShape2D_g3fdk")
 
 [node name="BallVisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4, 4)
+scale = Vector2(0.4, 0.4)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="BallVisibleOnScreenNotifier2D" to="." method="_on_ball_visible_on_screen_notifier_2d_screen_exited"]

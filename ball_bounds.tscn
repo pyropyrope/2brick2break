@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuk7g7ktpa7sl"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_v73cj"]
-a = Vector2(7, 82)
-b = Vector2(7, 363)
+a = Vector2(363, -7.00002)
+b = Vector2(82, -7)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_lnmj5"]
-a = Vector2(263, 82)
-b = Vector2(7, 82)
+a = Vector2(-263, -82)
+b = Vector2(-7, -82)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_2nows"]
-a = Vector2(263, 82)
-b = Vector2(263, 363)
+a = Vector2(-82, 263)
+b = Vector2(-363, 263)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_e8y0e"]
 a = Vector2(7, 363)
@@ -21,19 +21,29 @@ b = Vector2(263, 363)
 [node name="LeftWall" type="StaticBody2D" parent="." groups=["walls"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+rotation = 1.5708
 shape = SubResource("SegmentShape2D_v73cj")
+one_way_collision = true
+one_way_collision_margin = 111.9
 
 [node name="TopWall" type="StaticBody2D" parent="." groups=["walls"]]
 
 [node name="TopWallCollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+rotation = 3.14159
 shape = SubResource("SegmentShape2D_lnmj5")
+one_way_collision = true
+one_way_collision_margin = 111.9
 
 [node name="RightWall" type="StaticBody2D" parent="." groups=["walls"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+rotation = 4.71239
 shape = SubResource("SegmentShape2D_2nows")
+one_way_collision = true
+one_way_collision_margin = 111.9
 
 [node name="Floor" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 0
 
