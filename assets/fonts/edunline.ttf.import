@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/edunline.ttf-26ea43a21090e230b65c19834ba76863
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
