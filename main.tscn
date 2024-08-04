@@ -1,15 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsemcq0amy7ej"]
+[gd_scene load_steps=10 format=3 uid="uid://bsemcq0amy7ej"]
 
 [ext_resource type="PackedScene" uid="uid://blhuryfkpwo6t" path="res://background.tscn" id="1_1ihs2"]
 [ext_resource type="Script" path="res://main.gd" id="1_vn2ai"]
 [ext_resource type="PackedScene" uid="uid://dxq3hy1xqbt0a" path="res://paddle.tscn" id="2_2ur46"]
 [ext_resource type="PackedScene" uid="uid://cuk7g7ktpa7sl" path="res://ball_bounds.tscn" id="2_88lhb"]
 [ext_resource type="PackedScene" uid="uid://b1lkubleua7kc" path="res://ball.tscn" id="4_5equr"]
+[ext_resource type="Theme" uid="uid://baugxgjplv2xj" path="res://pixle.tres" id="4_vv05h"]
 [ext_resource type="PackedScene" uid="uid://cfuk2b5x0fpld" path="res://level_manager.tscn" id="6_0hl08"]
 [ext_resource type="Script" path="res://Game.gd" id="6_ln5nf"]
 [ext_resource type="PackedScene" uid="uid://cjae5m785ar3u" path="res://hud.tscn" id="6_vfsmv"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_vn2ai")
 ball_scene = ExtResource("4_5equr")
 
@@ -23,6 +24,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 270.0
 offset_bottom = 370.0
+theme = ExtResource("4_vv05h")
 
 [node name="StartButton" type="Button" parent="StartScreen"]
 layout_mode = 1
@@ -38,6 +40,7 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme = ExtResource("4_vv05h")
 text = "START
 "
 

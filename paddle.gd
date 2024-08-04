@@ -42,6 +42,4 @@ func _process(delta):
 	position = position.clamp(Vector2(border_width,0),Vector2(screen_size.x-(sprite_width+border_width),INF))
 
 func get_center():
-	var center_x = position.x + (sprite_width/2)
-	var center_y = position.y + (sprite_height/2)
-	return Vector2(center_x,center_y)
+	return $PaddleCollisionShape.global_position

@@ -3,11 +3,15 @@ extends Node
 @export var ball_scene: PackedScene
 #score multiplier, adjustable
 @export var multiplier =  100
+@export var ball_height = 25
+var game_started = false
+
 #basic game info
 var score = 0
 var lives = 3
 var level = 0
 var new_ball
+
 
 # Called when the node enters the scene tree for the first time.
 #needs aesprite to display any assets?
@@ -26,22 +30,25 @@ func _ready():
 func _process(delta):
 	#launches ball when space is pressed
 	#TODO better game flow, add launch variables
-	if Input.is_action_just_pressed('launch'):
+	if game_started == true:
+		if Input.is_action_just_pressed('launch'):
+			
+			var paddle_center = get_paddle_center()
+			new_ball = create_ball(paddle_center)
 		
-		var paddle_center = get_paddle_center()
-		new_ball = create_ball(Vector2(paddle_center.x,paddle_center.y-30))
-	
-	if Input.is_action_just_released('launch'):
-		var paddle_center = get_paddle_center()
-		var launch_vector = (new_ball.position - paddle_center) *.02
-		new_ball.launch(launch_vector)
-	
+		if Input.is_action_just_released('launch'):
+			var paddle_center = get_paddle_center()
+			var launch_vector = (new_ball.get_center() - paddle_center).normalized()
+			print(launch_vector)
+			new_ball.launch(launch_vector)
+		
 
 #creates and launches a ball at specified coordinates 
 #TODO add variable direction
 func create_ball(v):
 	var ball = ball_scene.instantiate()
 	#put ball at positon
+	v = v - Vector2(ball.get_offset().x, ball_height)
 	ball.position = v
 	$BallSack.add_child(ball)
 	return(ball)
@@ -55,6 +62,7 @@ func _on_start_button_pressed():
 	$StartScreen.hide()
 	$Game.show()
 	$BallSack.show()
+	game_started = true
 
 func _on_level_over():
 	print('level over')
