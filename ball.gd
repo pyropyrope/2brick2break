@@ -1,5 +1,9 @@
 extends RigidBody2D
-@export var speed = 200
+@export var speed = 300
+@export var min_speed_mod = .8
+@export var max_speed_mod = 3
+@export var paddle_bounce_mod = .05
+
 var power = 1
 var is_in_play = false
 
@@ -14,14 +18,19 @@ func _process(delta):
  
 func _physics_process(delta):
 	if Engine.get_physics_frames()%10 == 0 && is_in_play == true:
-		if linear_velocity.length() < speed/2:
+		if linear_velocity.length() < speed*min_speed_mod:
 			var curr_speed = linear_velocity.length()
-			var push = (speed/2)/curr_speed
+			var push = (speed*min_speed_mod)/curr_speed
 			apply_central_impulse(linear_velocity*push)
+		if linear_velocity.length() > speed*max_speed_mod:
+			print('zoom')
+			linear_velocity = linear_velocity.limit_length(max_speed_mod)
 
 func _on_body_entered(body):
 	if body.has_method("damage"):
 		body.damage(power)
+	if body.has_method('get_is_paddle'):
+		paddle_boost(body)
 
 func launch (l):
 	apply_central_impulse(l*speed)
@@ -40,3 +49,12 @@ func get_offset():
 
 func get_center():
 	return $BallCollisionShape2D.global_position
+
+#TODO 
+func paddle_boost(paddle):
+	var paddle_center_x = paddle.get_center().x
+	var ball_center_x = global_position.x
+	
+	# math goes here
+	
+	

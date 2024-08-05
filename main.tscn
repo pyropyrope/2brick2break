@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsemcq0amy7ej"]
+[gd_scene load_steps=12 format=3 uid="uid://bsemcq0amy7ej"]
 
 [ext_resource type="PackedScene" uid="uid://blhuryfkpwo6t" path="res://background.tscn" id="1_1ihs2"]
 [ext_resource type="Script" path="res://main.gd" id="1_vn2ai"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cuk7g7ktpa7sl" path="res://ball_bounds.tscn" id="2_88lhb"]
 [ext_resource type="PackedScene" uid="uid://b1lkubleua7kc" path="res://ball.tscn" id="4_5equr"]
 [ext_resource type="Theme" uid="uid://baugxgjplv2xj" path="res://pixle.tres" id="4_vv05h"]
+[ext_resource type="Texture2D" uid="uid://dl3h8xnjk1kpe" path="res://assets/brick break start frame.aseprite" id="5_lb7ac"]
 [ext_resource type="PackedScene" uid="uid://cfuk2b5x0fpld" path="res://level_manager.tscn" id="6_0hl08"]
 [ext_resource type="Script" path="res://Game.gd" id="6_ln5nf"]
 [ext_resource type="PackedScene" uid="uid://cjae5m785ar3u" path="res://hud.tscn" id="6_vfsmv"]
+[ext_resource type="Script" path="res://NextLevelButton.gd" id="11_qfxcu"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vn2ai")
@@ -33,16 +35,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -28.0
-offset_top = -15.5
-offset_right = 28.0
-offset_bottom = 15.5
+offset_left = -51.5
+offset_top = -21.0
+offset_right = 51.5
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_vv05h")
 text = "START
 "
+
+[node name="BrickBreakStartFrame" type="Sprite2D" parent="StartScreen"]
+position = Vector2(135, 185)
+texture = ExtResource("5_lb7ac")
+
+[node name="MarginContainer" type="MarginContainer" parent="StartScreen"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_vv05h")
+
+[node name="LevelBuilderButton" type="Button" parent="StartScreen/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_vv05h")
+theme_override_font_sizes/font_size = 19
+text = "level builder"
 
 [node name="Game" type="Node" parent="."]
 script = ExtResource("6_ln5nf")
@@ -60,4 +83,24 @@ visible = false
 speed = 400
 start_pos_y = 340
 
+[node name="NextLevelMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 270.0
+offset_bottom = 370.0
+
+[node name="NextLevelButton" type="Button" parent="NextLevelMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_vv05h")
+text = "Next Level"
+script = ExtResource("11_qfxcu")
+
 [connection signal="pressed" from="StartScreen/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="NextLevelMenu/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="NextLevelMenu/NextLevelButton" to="NextLevelMenu/NextLevelButton" method="_on_pressed"]

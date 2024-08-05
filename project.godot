@@ -25,12 +25,12 @@ SignalBus="*res://signal_bus.gd"
 
 [display]
 
-window/size/viewport_width=540
-window/size/viewport_height=740
+window/size/viewport_width=270
+window/size/viewport_height=370
 window/size/resizable=false
-window/stretch/mode="viewport"
-window/stretch/scale=2.0
+window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
+window/per_pixel_transparency/allowed=true
 window/handheld/orientation=1
 
 [editor_plugins]

@@ -27,8 +27,8 @@ func damage(power):
 		$Brick1.set_texture(t_dict[toughness])
 
 func setup_brick(pos, t):
+	start_toughness = t
 	toughness = t
 	position = pos
-	
 	$Brick1.set_texture(t_dict[toughness])
 

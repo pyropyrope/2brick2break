@@ -1,6 +1,5 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://baugxgjplv2xj"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://baugxgjplv2xj"]
 
-[ext_resource type="FontFile" uid="uid://c53g580382vuq" path="res://assets/fonts/edunline.ttf" id="1_76cke"]
 [ext_resource type="FontFile" uid="uid://c1mb5s4ohbnol" path="res://assets/fonts/editundo.ttf" id="1_kvvf7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjbnj"]
@@ -53,9 +52,9 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.2, 0.223529, 0.254902, 1)
-border_color = Color(0.290196, 0.329412, 0.384314, 1)
+bg_color = Color(0.113725, 0.113725, 0.113725, 1)
 corner_detail = 5
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5746u"]
 content_margin_left = 4.0
@@ -90,8 +89,8 @@ Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
-Button/font_sizes/font_size = 38
-Button/fonts/font = ExtResource("1_76cke")
+Button/font_sizes/font_size = 44
+Button/fonts/font = ExtResource("1_kvvf7")
 Button/styles/disabled = SubResource("StyleBoxFlat_pjbnj")
 Button/styles/focus = SubResource("StyleBoxFlat_ql0o2")
 Button/styles/hover = SubResource("StyleBoxFlat_bnjvk")

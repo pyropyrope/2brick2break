@@ -5,6 +5,7 @@ extends Node
 @export var multiplier =  100
 @export var ball_height = 25
 var game_started = false
+var levels_played = 0
 
 #basic game info
 var score = 0
@@ -21,6 +22,8 @@ func _ready():
 	SignalBus.brick_destroyed.connect(_on_brick_destroyed)
 	SignalBus.level_over.connect(_on_level_over)
 	SignalBus.ball_exit.connect(_on_ball_exit)
+	levels_played += 1
+	$Game/HUD/RightContainer/LevelNum.text = str(levels_played)
 	#displays first (only) level
 	#TODO some kind of level manager func? or do i want a scene with all the levels??? bleh
 	$Game.hide()
@@ -55,7 +58,7 @@ func create_ball(v):
 
 #adds to score based on toughness
 func _on_brick_destroyed(arg):
-	score += arg * multiplier
+	score = score + arg * multiplier
 	$Game/HUD.update_score(score)
 	
 func _on_start_button_pressed():
@@ -66,6 +69,10 @@ func _on_start_button_pressed():
 
 func _on_level_over():
 	print('level over')
+	$NextLevelMenu.visible = true
+	for ball in $BallSack.get_children():
+		ball.queue_free()
+	
 
 func _on_ball_exit():
 	print("ball exit")
@@ -74,3 +81,9 @@ func _on_ball_exit():
 
 func get_paddle_center():
 	return $Game/Paddle.get_center()
+
+func _on_next_level_button_pressed():
+	$NextLevelMenu.visible = false
+	levels_played += 1
+	$Game/HUD/RightContainer/LevelNum.text = str(levels_played)
+	$Game/LevelManager.make_rand_level(4,10,10)

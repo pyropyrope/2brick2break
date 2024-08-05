@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c53g580382vuq"
-path="res://.godot/imported/edunline.ttf-26ea43a21090e230b65c19834ba76863.fontdata"
+uid="uid://uosb46fondog"
+path="res://.godot/imported/edundot.ttf-1e87dcf4e6abdb7d513303a3e940748d.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/edunline.ttf"
-dest_files=["res://.godot/imported/edunline.ttf-26ea43a21090e230b65c19834ba76863.fontdata"]
+source_file="res://assets/fonts/edundot.ttf"
+dest_files=["res://.godot/imported/edundot.ttf-1e87dcf4e6abdb7d513303a3e940748d.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=2
+antialiasing=0
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
@@ -21,7 +21,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=3
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

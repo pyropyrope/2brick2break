@@ -1,8 +1,6 @@
-extends Node
-signal brick_destroyed
-signal level_over
-signal ball_exit
-signal next_level_start
+extends Control
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

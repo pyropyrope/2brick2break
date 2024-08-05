@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed = 300
 @export var border_width = 7
 @export var start_pos_y = 324
-
+static var is_paddle = true
 var sprite_width
 var sprite_height
 var sprite_size
@@ -43,3 +43,6 @@ func _process(delta):
 
 func get_center():
 	return $PaddleCollisionShape.global_position
+
+func get_is_paddle():
+	return is_paddle
