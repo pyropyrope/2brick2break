@@ -1,6 +1,6 @@
 extends RigidBody2D
-@export var speed = 300
-@export var min_speed_mod = .8
+@export var speed = 400
+@export var min_speed_mod = .9
 @export var max_speed_mod = 3
 @export var paddle_bounce_mod = .05
 
@@ -18,13 +18,17 @@ func _process(delta):
  
 func _physics_process(delta):
 	if Engine.get_physics_frames()%10 == 0 && is_in_play == true:
+		# too slow
 		if linear_velocity.length() < speed*min_speed_mod:
-			var curr_speed = linear_velocity.length()
-			var push = (speed*min_speed_mod)/curr_speed
-			apply_central_impulse(linear_velocity*push)
-		if linear_velocity.length() > speed*max_speed_mod:
-			print('zoom')
-			linear_velocity = linear_velocity.limit_length(max_speed_mod)
+			var target_velocity = linear_velocity.normalized()* (speed*min_speed_mod)
+			var push = linear_velocity - target_velocity
+			apply_central_impulse(push)
+		#too fast
+		if abs(linear_velocity.length()) > speed*max_speed_mod:
+			var target_velocity = linear_velocity.normalized()*(speed*max_speed_mod)
+			var push = -(linear_velocity - target_velocity)
+			apply_central_impulse(push)
+			print(str(self) + ' slowed')
 
 func _on_body_entered(body):
 	if body.has_method("damage"):

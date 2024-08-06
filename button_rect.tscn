@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://lv2wl74jlldh"]
+
+[ext_resource type="Theme" uid="uid://baugxgjplv2xj" path="res://pixle.tres" id="1_5q0tv"]
+[ext_resource type="Texture2D" uid="uid://7xf4ewl54srw" path="res://assets/brickframe.aseprite" id="2_8nqmf"]
+
+[node name="ButtonRect" type="NinePatchRect"]
+offset_right = 21.0
+offset_bottom = 21.0
+size_flags_horizontal = 0
+theme = ExtResource("1_5q0tv")
+texture = ExtResource("2_8nqmf")
+region_rect = Rect2(0, 0, 21, 21)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7

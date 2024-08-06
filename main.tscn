@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsemcq0amy7ej"]
+[gd_scene load_steps=15 format=3 uid="uid://bsemcq0amy7ej"]
 
 [ext_resource type="PackedScene" uid="uid://blhuryfkpwo6t" path="res://background.tscn" id="1_1ihs2"]
 [ext_resource type="Script" path="res://main.gd" id="1_vn2ai"]
@@ -6,11 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cuk7g7ktpa7sl" path="res://ball_bounds.tscn" id="2_88lhb"]
 [ext_resource type="PackedScene" uid="uid://b1lkubleua7kc" path="res://ball.tscn" id="4_5equr"]
 [ext_resource type="Theme" uid="uid://baugxgjplv2xj" path="res://pixle.tres" id="4_vv05h"]
-[ext_resource type="Texture2D" uid="uid://dl3h8xnjk1kpe" path="res://assets/brick break start frame.aseprite" id="5_lb7ac"]
+[ext_resource type="Texture2D" uid="uid://7xf4ewl54srw" path="res://assets/brickframe.aseprite" id="5_tru34"]
 [ext_resource type="PackedScene" uid="uid://cfuk2b5x0fpld" path="res://level_manager.tscn" id="6_0hl08"]
 [ext_resource type="Script" path="res://Game.gd" id="6_ln5nf"]
+[ext_resource type="Texture2D" uid="uid://b4i5f3gcab7aw" path="res://assets/brickframe mid.aseprite" id="6_oe5jv"]
 [ext_resource type="PackedScene" uid="uid://cjae5m785ar3u" path="res://hud.tscn" id="6_vfsmv"]
+[ext_resource type="Texture2D" uid="uid://bymtm6x4c1k3r" path="res://assets/brickframe lite.aseprite" id="7_qx1g2"]
 [ext_resource type="Script" path="res://NextLevelButton.gd" id="11_qfxcu"]
+[ext_resource type="Script" path="res://Something.gd" id="14_bltjf"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vn2ai")
@@ -28,6 +31,20 @@ offset_right = 270.0
 offset_bottom = 370.0
 theme = ExtResource("4_vv05h")
 
+[node name="StartFrame" type="NinePatchRect" parent="StartScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_tru34")
+draw_center = false
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
 [node name="StartButton" type="Button" parent="StartScreen"]
 layout_mode = 1
 anchors_preset = 8
@@ -35,20 +52,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.5
-offset_top = -21.0
-offset_right = 51.5
-offset_bottom = 21.0
+offset_left = -59.0
+offset_top = -24.0
+offset_right = 59.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
 theme = ExtResource("4_vv05h")
-text = "START
-"
+text = "START"
+flat = true
 
-[node name="BrickBreakStartFrame" type="Sprite2D" parent="StartScreen"]
-position = Vector2(135, 185)
-texture = ExtResource("5_lb7ac")
+[node name="NinePatchRect" type="NinePatchRect" parent="StartScreen/StartButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_oe5jv")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="StartScreen"]
 layout_mode = 1
@@ -56,16 +82,34 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -53.0
+offset_top = -74.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("4_vv05h")
 
-[node name="LevelBuilderButton" type="Button" parent="StartScreen/MarginContainer"]
+[node name="SomethingButton" type="Button" parent="StartScreen/MarginContainer"]
+show_behind_parent = true
 layout_mode = 2
 theme = ExtResource("4_vv05h")
-theme_override_font_sizes/font_size = 19
-text = "level builder"
+theme_override_font_sizes/font_size = 27
+text = "something button"
+text_overrun_behavior = 4
+
+[node name="ButtonRect" type="NinePatchRect" parent="StartScreen/MarginContainer/SomethingButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_vv05h")
+texture = ExtResource("7_qx1g2")
+draw_center = false
+region_rect = Rect2(0, 0, 21, 21)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
 [node name="Game" type="Node" parent="."]
 script = ExtResource("6_ln5nf")
@@ -98,9 +142,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_vv05h")
-text = "Next Level"
+text = "Next Level
+???"
 script = ExtResource("11_qfxcu")
 
+[node name="Something" type="CanvasModulate" parent="."]
+script = ExtResource("14_bltjf")
+
 [connection signal="pressed" from="StartScreen/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartScreen/MarginContainer/SomethingButton" to="Something" method="_on_something_button_pressed"]
 [connection signal="pressed" from="NextLevelMenu/NextLevelButton" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="NextLevelMenu/NextLevelButton" to="NextLevelMenu/NextLevelButton" method="_on_pressed"]
