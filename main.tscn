@@ -93,9 +93,11 @@ layout_mode = 2
 theme = ExtResource("4_vv05h")
 theme_override_font_sizes/font_size = 27
 text = "something button"
+flat = true
 text_overrun_behavior = 4
 
 [node name="ButtonRect" type="NinePatchRect" parent="StartScreen/MarginContainer/SomethingButton"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,12 +106,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_vv05h")
 texture = ExtResource("7_qx1g2")
-draw_center = false
 region_rect = Rect2(0, 0, 21, 21)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="Game" type="Node" parent="."]
 script = ExtResource("6_ln5nf")

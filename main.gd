@@ -17,7 +17,7 @@ var new_ball
 # Called when the node enters the scene tree for the first time.
 #needs aesprite to display any assets?
 func _ready():
-	
+
 	#connects to the signal bus
 	SignalBus.brick_destroyed.connect(_on_brick_destroyed)
 	SignalBus.level_over.connect(_on_level_over)
@@ -35,18 +35,18 @@ func _process(delta):
 	#TODO better game flow, add launch variables
 	if game_started == true:
 		if Input.is_action_just_pressed('launch'):
-			
+
 			var paddle_center = get_paddle_center()
 			new_ball = create_ball(paddle_center)
-		
+
 		if Input.is_action_just_released('launch'):
 			var paddle_center = get_paddle_center()
 			var launch_vector = (new_ball.get_center() - paddle_center).normalized()
 			print(launch_vector)
 			new_ball.launch(launch_vector)
-		
 
-#creates and launches a ball at specified coordinates 
+
+#creates and launches a ball at specified coordinates
 #TODO add variable direction
 func create_ball(v):
 	var ball = ball_scene.instantiate()
@@ -60,7 +60,7 @@ func create_ball(v):
 func _on_brick_destroyed(arg):
 	score = score + arg * multiplier
 	$Game/HUD.update_score(score)
-	
+
 func _on_start_button_pressed():
 	$StartScreen.hide()
 	$Game.show()
@@ -72,7 +72,7 @@ func _on_level_over():
 	$NextLevelMenu.visible = true
 	for ball in $BallSack.get_children():
 		ball.queue_free()
-	
+
 
 func _on_ball_exit():
 	print("ball exit")

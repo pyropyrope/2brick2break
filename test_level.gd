@@ -16,11 +16,11 @@ func possible_possitons():
 	var num_bricks = get_child_count()
 	var num_rows = num_bricks/row_length
 	var brick_count = 0
-	
+
 	for r in (num_rows-1):
 		var row = Array()
 		for b in row_length:
-			
+
 			var brick = get_child(brick_count)
 			var pos = brick.get_position()
 			row.append(pos)

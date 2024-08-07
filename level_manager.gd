@@ -14,11 +14,11 @@ func _process(delta):
 	pass
 
 func make_level(cols,rows):
-	
+
 	for r in (rows):
 		var row = possible_possitons[r]
 		for c in (cols):
 			var new_brick = brick.instatiate()
 			new_brick.setup_brick(row[c],1)
 			$ActiveLevel.addChild(new_brick)
-			
+
