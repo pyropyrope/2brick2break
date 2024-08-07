@@ -7,53 +7,42 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.3)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+bg_color = Color(0.109804, 0.109804, 0.113725, 0.254902)
+corner_detail = 1
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql0o2"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
+bg_color = Color(0.501961, 0.52549, 0.619608, 1)
 draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.262745, 0.282353, 0.368627, 1)
+corner_detail = 1
 expand_margin_bottom = 2.0
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnjvk"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.225, 0.225, 0.225, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+bg_color = Color(0.180392, 0.192157, 0.243137, 1)
+corner_detail = 1
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1be1d"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.113725, 0.113725, 0.113725, 1)
-corner_detail = 5
+bg_color = Color(0.109804, 0.109804, 0.113725, 1)
+corner_detail = 1
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5746u"]
@@ -61,29 +50,25 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+bg_color = Color(0.180392, 0.192157, 0.243137, 1)
+corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u3511"]
 
 [resource]
 default_font = ExtResource("1_kvvf7")
 default_font_size = 28
-Button/colors/font_color = Color(0.854902, 0.878431, 0.917647, 1)
+Button/colors/font_color = Color(0.956863, 0.964706, 1, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
-Button/colors/font_focus_color = Color(0.854902, 0.878431, 0.917647, 1)
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/font_outline_color = Color(1, 1, 1, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.956863, 0.964706, 1, 1)
+Button/colors/font_hover_color = Color(0.956863, 0.964706, 1, 1)
+Button/colors/font_hover_pressed_color = Color(0.956863, 0.964706, 1, 1)
+Button/colors/font_outline_color = Color(0.956863, 0.964706, 1, 1)
+Button/colors/font_pressed_color = Color(0.956863, 0.964706, 1, 1)
 Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
-Button/colors/icon_focus_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_focus_color = Color(0.956863, 0.964706, 1, 1)
+Button/colors/icon_hover_color = Color(0.956863, 0.964706, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(0.956863, 0.964706, 1, 1)
 Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 4
@@ -96,8 +81,8 @@ Button/styles/focus = SubResource("StyleBoxFlat_ql0o2")
 Button/styles/hover = SubResource("StyleBoxFlat_bnjvk")
 Button/styles/normal = SubResource("StyleBoxFlat_1be1d")
 Button/styles/pressed = SubResource("StyleBoxFlat_5746u")
-Label/colors/font_color = Color(0.854902, 0.878431, 0.917647, 1)
-Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_color = Color(0.956863, 0.964706, 1, 1)
+Label/colors/font_outline_color = Color(0.109804, 0.109804, 0.113725, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 Label/constants/line_spacing = 3
 Label/constants/outline_size = 0

@@ -21,7 +21,7 @@ func _process(delta):
 
 #generates a randomized level with given parameters
 func make_rand_level(rows,cols,blank_chance):
-	
+
 	#creates blank array for each row
 	for r in (rows):
 		var row = possible_possitons[r]
@@ -29,9 +29,9 @@ func make_rand_level(rows,cols,blank_chance):
 		for c in (cols):
 			#creates a random number between 1 and 100
 			var blank_rand = ((randi()%100))
-			
+
 			#if number is less than the blank chance, make a brick
-			if blank_rand > blank_chance: 
+			if blank_rand > blank_chance:
 				var new_brick = brick.instantiate()
 				new_brick.setup_brick(row[c],(randi()%3)+1)
 				$ActiveLevel.add_child(new_brick)
@@ -44,7 +44,7 @@ func make_rand_level(rows,cols,blank_chance):
 func load_level(array):
 	var rows = array.get_length()
 	var cols = array[0].get_lenght()
-	
+
 	for r in (rows):
 		var row = possible_possitons[r]
 		#adds a brick for each col
@@ -57,11 +57,11 @@ func load_level(array):
 			#dont make brick
 			else:
 				pass
-	
+
 #im not commenting this
 func hide():
 	$ActiveLevel.hide()
-	
+
 func show():
 	$ActiveLevel.show()
 "
